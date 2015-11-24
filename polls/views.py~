@@ -4,6 +4,7 @@ from django.core.urlresolvers import reverse
 from django.views import generic
 
 # from django.template import RequestContext, loader
+from django.utils import timezone
 from .models import Choice, Question
 # Create your views here.
 
@@ -36,5 +37,5 @@ def vote(request, question_id):
 	else:
 		selected_choice.votes += 1
 		selected_choice.save()
-		print request.POST['choice'];
+		print request.POST['choice']
 		return HttpResponseRedirect(reverse('polls:results', args=(p.id,)))
